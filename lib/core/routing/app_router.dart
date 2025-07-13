@@ -38,7 +38,7 @@ class AppRouter {
 
   PageRouteBuilder _createPageRoute(final Widget page) => PageRouteBuilder(
       transitionDuration: const Duration(milliseconds: 250),
-      pageBuilder: (_, final animation, final __) => SlideTransition(
+      pageBuilder: (_, final animation, final _) => SlideTransition(
         position: Tween<Offset>(
           begin: const Offset(1, 0),
           end: Offset.zero,

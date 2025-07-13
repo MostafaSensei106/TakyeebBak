@@ -24,7 +24,6 @@ class TakyeebBak extends StatelessWidget {
       supportedLocales: const [
         // English (United States)
         Locale('en', 'US'),
-        
         // Arabic (Saudi Arabia)
         Locale('ar', 'SA'),
       ],
