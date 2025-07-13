@@ -12,40 +12,40 @@ class TakyeebBak extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => MaterialApp(
-      title: AppConstants.appName,
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
-      navigatorKey: AppRouter.navigatorKey,
-      initialRoute: Routes.mainPage,
-      onGenerateRoute: appRouter.generateRoute,
-      themeAnimationCurve: Curves.easeInOutCirc,
-      debugShowCheckedModeBanner: false,
-      locale: const Locale('en', 'US'),
-      supportedLocales: const [
-        // English (United States)
-        Locale('en', 'US'),
-        // Arabic (Saudi Arabia)
-        Locale('ar', 'SA'),
-      ],
-      localizationsDelegates: [
+    title: AppConstants.appName,
+    theme: ThemeData.light(),
+    darkTheme: ThemeData.dark(),
+    navigatorKey: AppRouter.navigatorKey,
+    initialRoute: Routes.mainPage,
+    onGenerateRoute: appRouter.generateRoute,
+    themeAnimationCurve: Curves.easeInOutCirc,
+    debugShowCheckedModeBanner: false,
+    locale: const Locale('en', 'US'),
+    supportedLocales: const [
+      // English (United States)
+      Locale('en', 'US'),
+      // Arabic (Saudi Arabia)
+      Locale('ar', 'SA'),
+    ],
+    localizationsDelegates: [
       AppLocalizations.delegate,
       GlobalCupertinoLocalizations.delegate,
       GlobalWidgetsLocalizations.delegate,
       GlobalMaterialLocalizations.delegate,
-      ],
-       localeListResolutionCallback: (locales, supportedLocales) =>
-                locales?.firstWhere(
-                  (locale) => supportedLocales.contains(locale),
-                  orElse: () => const Locale('ar', 'SA'),
-                ),
-            builder: (context, child) {
-              return SafeArea(
-                top: false,
-                bottom: true,
-                left: false,
-                right: false,
-                child: child!,
-              );
-            },
-    );
+    ],
+    localeListResolutionCallback: (locales, supportedLocales) =>
+        locales?.firstWhere(
+          (locale) => supportedLocales.contains(locale),
+          orElse: () => const Locale('ar', 'SA'),
+        ),
+    builder: (context, child) {
+      return SafeArea(
+        top: false,
+        bottom: true,
+        left: false,
+        right: false,
+        child: child!,
+      );
+    },
+  );
 }
