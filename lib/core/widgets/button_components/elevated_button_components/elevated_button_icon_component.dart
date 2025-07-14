@@ -6,9 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../config/constants/app_constants.dart';
 
 class ElevatedButtonIconComponent extends StatelessWidget {
-
   const ElevatedButtonIconComponent({
-    required this.label, required this.icon, required this.onPressed, super.key,
+    required this.label,
+    required this.icon,
+    required this.onPressed,
+    super.key,
     this.isEnabled = true,
     this.useMargin = false,
     this.useInBorderRadius = false,
@@ -32,28 +34,31 @@ class ElevatedButtonIconComponent extends StatelessWidget {
   /// and [useInBorderRadius] controls the border radius. The button displays an icon and a
   /// label, with styling based on the current theme's color scheme.
   Widget build(final BuildContext context) => Container(
-      margin: useMargin ? EdgeInsets.only(top: AppConstants.margin.h) : null,
-      child: ElevatedButton.icon(
-        onPressed: isEnabled ? onTap : null,
-        icon: Icon(icon, size: AppConstants.iconSize),
-        label: Text(label),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-          foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-          disabledBackgroundColor: Theme.of(context).colorScheme.error,
-          disabledForegroundColor: Theme.of(context).colorScheme.onError,
-          iconColor: Theme.of(context).colorScheme.onPrimaryContainer,
-          disabledIconColor: Theme.of(context).colorScheme.onError,
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-          shape: RoundedRectangleBorder(
-            borderRadius: useInBorderRadius
-                ? BorderRadius.circular(AppConstants.inBorderRadius)
-                : BorderRadius.circular(AppConstants.outBorderRadius),
-          ),
-          elevation: 2,
-          enableFeedback: true,
-          enabledMouseCursor: WidgetStateMouseCursor.clickable,
+    margin: useMargin ? EdgeInsets.only(top: AppConstants.margin.h) : null,
+    child: ElevatedButton.icon(
+      onPressed: isEnabled ? onTap : null,
+      icon: Icon(icon, size: AppConstants.iconSize),
+      label: Text(label),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
+        disabledBackgroundColor: Theme.of(context).colorScheme.error,
+        disabledForegroundColor: Theme.of(context).colorScheme.onError,
+        iconColor: Theme.of(context).colorScheme.onPrimaryContainer,
+        disabledIconColor: Theme.of(context).colorScheme.onError,
+        padding: EdgeInsets.symmetric(
+          horizontal: AppConstants.padding.w,
+          vertical: AppConstants.padding.h,
         ),
+        shape: RoundedRectangleBorder(
+          borderRadius: useInBorderRadius
+              ? BorderRadius.circular(AppConstants.inBorderRadius)
+              : BorderRadius.circular(AppConstants.outBorderRadius),
+        ),
+        elevation: 2,
+        enableFeedback: true,
+        enabledMouseCursor: WidgetStateMouseCursor.clickable,
       ),
-    );
+    ),
+  );
 }

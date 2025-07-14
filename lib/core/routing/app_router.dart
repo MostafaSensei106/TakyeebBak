@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart' show ColorScheme, Theme;
 import 'package:flutter/widgets.dart';
+import 'package:takyeebbak/features/page/login/ui/page/login_page.dart';
+import 'package:takyeebbak/features/page/onboarding_page/ui/page/onboarding_page.dart';
+import 'package:takyeebbak/features/page/register/ui/page/register_page.dart';
 
 import '../../features/page/main/ui/page/main_page.dart';
 import '../error/no_routes_error.dart';
@@ -20,9 +23,23 @@ class AppRouter {
   Route<dynamic> generateRoute(final RouteSettings settings) {
     Widget page;
     switch (settings.name) {
+
+      case Routes.onboardingPage:
+        page = const OnboardingPage();
+        break;
+        
       case Routes.mainPage:
         page = const MainPage();
         break;
+
+      case Routes.loginPage:
+        page = const LoginPage();
+        break;
+      
+      case Routes.registerPage:
+        page = const RegisterPage();
+        break;
+
 
       default:
         page = const NoRoutesError();
@@ -37,13 +54,13 @@ class AppRouter {
   /// 200 milliseconds.
 
   PageRouteBuilder _createPageRoute(final Widget page) => PageRouteBuilder(
-      transitionDuration: const Duration(milliseconds: 250),
-      pageBuilder: (_, final animation, final __) => SlideTransition(
-        position: Tween<Offset>(
-          begin: const Offset(1, 0),
-          end: Offset.zero,
-        ).animate(animation),
-        child: page,
-      ),
-    );
+    transitionDuration: const Duration(milliseconds: 250),
+    pageBuilder: (_, final animation, final _) => SlideTransition(
+      position: Tween<Offset>(
+        begin: const Offset(1, 0),
+        end: Offset.zero,
+      ).animate(animation),
+      child: page,
+    ),
+  );
 }

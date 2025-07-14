@@ -1,29 +1,52 @@
 import 'package:flutter/material.dart'
-    show Theme, Material, Colors, ListTile, InkWell;
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+    show
+        BorderRadius,
+        BoxDecoration,
+        BuildContext,
+        Colors,
+        Column,
+        Container,
+        EdgeInsets,
+        Icon,
+        IconData,
+        InkWell,
+        ListTile,
+        Material,
+        Radius,
+        StatelessWidget,
+        Text,
+        TextOverflow,
+        Theme,
+        VoidCallback,
+        Widget;
+import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:takyeebbak/core/config/constants/app_constants.dart';
+import 'package:takyeebbak/core/config/constants/app_enums.dart' show ListTileGroupType;
+import 'package:takyeebbak/core/widgets/app_divider_components/full_app_divider_components.dart';
 
-import '../../config/constants/app_constants.dart';
-import '../../config/constants/app_enums.dart';
-import '../app_divider_components/full_app_divider_components.dart';
 
-class ListTileWidgetComponent extends StatelessWidget {
-
-  const ListTileWidgetComponent({
-    required this.leading, required this.title, required this.selected, required this.groupType, super.key,
+class ListTileIconComponent extends StatelessWidget {
+  const ListTileIconComponent({
+    required this.leading,
+    required this.title,
+    required this.groupType,
+    super.key,
     this.subtitle,
     this.trailing,
     this.onTap,
     this.useinBorderRadius = false,
+    this.selected,
+    this.useMargin = true,
   });
-  final Widget leading;
+  final IconData leading;
   final String title;
   final String? subtitle;
   final Widget? trailing;
   final VoidCallback? onTap;
-  final bool selected;
+  final bool? selected;
   final bool useinBorderRadius;
+  final bool useMargin;
   final ListTileGroupType groupType;
 
   /// Calculates the border radius for the [ListTile] based on the [ListTileGroupType]
@@ -67,7 +90,10 @@ class ListTileWidgetComponent extends StatelessWidget {
   Widget build(final BuildContext context) {
     final borderRadius = _getBorderRadius();
     return Container(
-      margin: groupType == ListTileGroupType.top
+      margin:
+          useMargin &&
+              (groupType == ListTileGroupType.top ||
+                  groupType == ListTileGroupType.single)
           ? EdgeInsets.only(top: AppConstants.margin.h)
           : null,
       decoration: BoxDecoration(
@@ -81,35 +107,32 @@ class ListTileWidgetComponent extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 HapticFeedback.vibrate();
-                onTap!();
+                onTap?.call();
               },
               borderRadius: borderRadius,
               child: ListTile(
-                leading: leading is IconData
-                    ? Container(
-                        padding: const EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: Theme.of(
-                            context,
-                          ).colorScheme.surfaceContainerHighest,
-                        ),
-                        child: Icon(leading as IconData),
-                      )
-                    : leading,
+                leading: Container(
+                  padding: const EdgeInsets.all(AppConstants.padding),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                      AppConstants.inBorderRadius,
+                    ),
+                    color: Theme.of(context).colorScheme.surfaceContainerHigh,
+                  ),
+                  child: Icon(leading, size: AppConstants.iconSize),
+                ),
                 title: Text(title),
                 subtitle: subtitle != null
                     ? Text(subtitle!, overflow: TextOverflow.ellipsis)
                     : null,
                 trailing: trailing,
                 horizontalTitleGap: 13,
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                ),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 8),
               ),
             ),
           ),
-          if (groupType == ListTileGroupType.middle)
+          if (groupType == ListTileGroupType.middle ||
+              groupType == ListTileGroupType.top)
             const FullAppDividerComponents(),
         ],
       ),
