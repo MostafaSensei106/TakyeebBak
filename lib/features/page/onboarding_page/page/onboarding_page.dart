@@ -93,7 +93,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       );
                     },
                   ),
-                  IconButtonFilledTonalComponent(
+                  IconButtonF(
                     icon: Icons.arrow_forward_ios_sharp,
                     onPressed: _navigateToHome,
                   ),

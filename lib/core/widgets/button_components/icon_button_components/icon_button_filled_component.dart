@@ -2,8 +2,8 @@ import 'package:flutter/material.dart' show IconButton;
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
-class IconButtonComponent extends StatelessWidget {
-  const IconButtonComponent({
+class IconButtonFilledComponent extends StatelessWidget {
+  const IconButtonFilledComponent({
     required this.icon, required this.onPressed, super.key,
   });
   final IconData icon;
