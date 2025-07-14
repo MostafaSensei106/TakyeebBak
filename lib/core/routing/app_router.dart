@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' show ColorScheme, Theme;
 import 'package:flutter/widgets.dart';
-import 'package:takyeebbak/features/page/onboarding_page/page/onboarding_page.dart';
+import 'package:takyeebbak/features/page/onboarding_page/ui/page/onboarding_page.dart';
 
 import '../../features/page/main/ui/page/main_page.dart';
 import '../error/no_routes_error.dart';
