@@ -21,13 +21,15 @@ class AppRouter {
   Route<dynamic> generateRoute(final RouteSettings settings) {
     Widget page;
     switch (settings.name) {
-      case Routes.mainPage:
-        page = const MainPage();
-        break;
 
       case Routes.onboardingPage:
         page = const OnboardingPage();
         break;
+        
+      case Routes.mainPage:
+        page = const MainPage();
+        break;
+
 
       default:
         page = const NoRoutesError();

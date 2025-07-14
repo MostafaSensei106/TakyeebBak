@@ -32,7 +32,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   void _navigateToHome() {
     Navigator.pushNamedAndRemoveUntil(
       context,
-      Routes.mainPage,
+      Routes.onboardingPage,
       (final route) => false,
     );
   }

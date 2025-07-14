@@ -16,7 +16,7 @@ class TakyeebBak extends StatelessWidget {
     theme: ThemeData.light(),
     darkTheme: ThemeData.dark(),
     navigatorKey: AppRouter.navigatorKey,
-    initialRoute: Routes.mainPage,
+    initialRoute: Routes.onboardingPage,
     onGenerateRoute: appRouter.generateRoute,
     themeAnimationCurve: Curves.easeInOutCirc,
     debugShowCheckedModeBanner: false,
