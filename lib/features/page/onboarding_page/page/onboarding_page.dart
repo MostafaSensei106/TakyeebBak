@@ -4,6 +4,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:takyeebbak/core/routing/routes.dart';
 import 'package:takyeebbak/core/widgets/button_components/elevated_button_components/elevated_button_icon_component.dart';
 import 'package:takyeebbak/core/widgets/button_components/icon_button_components/icon_button_component.dart';
+import 'package:takyeebbak/core/widgets/button_components/icon_button_components/icon_button_filled_component.dart';
 import 'package:takyeebbak/core/widgets/button_components/icon_button_components/icon_button_filledtonal_component.dart';
 import 'package:takyeebbak/core/widgets/lottie_component/lottie_component.dart';
 
@@ -93,7 +94,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       );
                     },
                   ),
-                  IconButtonF(
+                  IconButtonFilledComponent(
                     icon: Icons.arrow_forward_ios_sharp,
                     onPressed: _navigateToHome,
                   ),
