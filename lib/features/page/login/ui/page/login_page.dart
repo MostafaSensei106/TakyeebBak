@@ -76,9 +76,6 @@ class LoginPage extends StatelessWidget {
                 Expanded(
                   child: ElevatedButtonComponent(
                     label: 'Next',
-                    isEnabled:
-                        phoneController.text.isNotEmpty &&
-                        validatePhoneNumber(phoneFormatter.getUnmaskedText()),
                     onPressed: () {
                       if (validatePhoneNumber(
                         phoneFormatter.getUnmaskedText(),

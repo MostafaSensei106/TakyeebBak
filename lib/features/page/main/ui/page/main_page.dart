@@ -1,13 +1,27 @@
-
-import 'package:flutter/material.dart' show Scaffold;
-import 'package:flutter/widgets.dart'
-    show StatelessWidget, BuildContext, Widget, Center, Text;
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
   @override
   Widget build(final BuildContext context) => Scaffold(
-      body: const Center(child: Text('Main Page')),
-    );
+    body: SafeArea(
+      child: SingleChildScrollView(child: Column(children: const [
+
+
+      ],
+        )),
+    ),
+    bottomNavigationBar: NavigationBar(
+      destinations: const [
+        NavigationDestination(icon: Icon(CupertinoIcons.home), label: 'Home'),
+        NavigationDestination(icon: Icon(CupertinoIcons.cart), label: 'Cart'),
+        NavigationDestination(
+          icon: Icon(CupertinoIcons.person),
+          label: 'Profile',
+        ),
+      ],
+    ),
+  );
 }
