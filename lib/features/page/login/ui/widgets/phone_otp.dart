@@ -24,7 +24,6 @@ class _PhoneOtpPageState extends State<PhoneOtpPage> {
   }
 
   void _onOtpFieldChanged(String value, int index) {
-    // لو النص الملصوق أكثر من رقم واحد
     if (value.length > 1) {
       final paste = value.replaceAll(RegExp(r'[^0-9]'), '');
       for (int i = 0; i < otpLength; i++) {
@@ -37,10 +36,8 @@ class _PhoneOtpPageState extends State<PhoneOtpPage> {
           controllers[i].clear();
         }
       }
-      // إزالة الفوكس من آخر خانة
       FocusScope.of(context).unfocus();
     } else {
-      // الانتقال للخانة التالية أو السابقة حسب الإدخال
       if (value.isNotEmpty && index < otpLength - 1) {
         FocusScope.of(context).requestFocus(focusNodes[index + 1]);
       } else if (value.isEmpty && index > 0) {
@@ -65,7 +62,9 @@ class _PhoneOtpPageState extends State<PhoneOtpPage> {
         ],
         onChanged: (value) => _onOtpFieldChanged(value, index),
         decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(AppConstants.outBorderRadius),
+          ),
         ),
       ),
     );
