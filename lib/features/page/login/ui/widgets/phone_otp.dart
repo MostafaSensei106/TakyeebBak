@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:takyeebbak/core/config/constants/app_constants.dart';
 import 'package:takyeebbak/core/widgets/app_bar_component/app_bar.dart';
+import 'package:takyeebbak/core/widgets/button_components/elevated_button_components/elevated_button_component.dart';
 
 class PhoneOtpPage extends StatefulWidget {
   const PhoneOtpPage({super.key});
@@ -23,6 +24,7 @@ class _PhoneOtpPageState extends State<PhoneOtpPage> {
   }
 
   void _onOtpFieldChanged(String value, int index) {
+    // لو النص الملصوق أكثر من رقم واحد
     if (value.length > 1) {
       final paste = value.replaceAll(RegExp(r'[^0-9]'), '');
       for (int i = 0; i < otpLength; i++) {
@@ -35,8 +37,10 @@ class _PhoneOtpPageState extends State<PhoneOtpPage> {
           controllers[i].clear();
         }
       }
+      // إزالة الفوكس من آخر خانة
       FocusScope.of(context).unfocus();
     } else {
+      // الانتقال للخانة التالية أو السابقة حسب الإدخال
       if (value.isNotEmpty && index < otpLength - 1) {
         FocusScope.of(context).requestFocus(focusNodes[index + 1]);
       } else if (value.isEmpty && index > 0) {
@@ -86,7 +90,7 @@ class _PhoneOtpPageState extends State<PhoneOtpPage> {
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: AppConstants.padding),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 24),
               Form(
@@ -94,6 +98,11 @@ class _PhoneOtpPageState extends State<PhoneOtpPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(otpLength, _buildOtpField),
                 ),
+              ),
+              const SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButtonComponent(label: 'Next', onPressed: () {}),
               ),
             ],
           ),
