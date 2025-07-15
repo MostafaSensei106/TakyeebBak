@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart' show ColorScheme, Theme;
 import 'package:flutter/widgets.dart';
 import 'package:takyeebbak/features/page/login/ui/page/login_page.dart';
+import 'package:takyeebbak/features/page/login/ui/widgets/phone_otp.dart' show PhoneOtpPage;
 import 'package:takyeebbak/features/page/onboarding_page/ui/page/onboarding_page.dart';
 import 'package:takyeebbak/features/page/register/ui/page/register_page.dart';
 
@@ -34,6 +35,10 @@ class AppRouter {
 
       case Routes.loginPage:
         page = const LoginPage();
+        break;
+
+      case Routes.phoneOtpPage:
+        page = const PhoneOtpPage();
         break;
       
       case Routes.registerPage:

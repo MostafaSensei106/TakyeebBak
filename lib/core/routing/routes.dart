@@ -11,6 +11,8 @@ class Routes {
 
   static const String loginPage = '/login';
 
+  static const String phoneOtpPage = '/login/phoneOtp';
+
   static const String registerPage = '/register';
 
   /// The route to the no routes page.

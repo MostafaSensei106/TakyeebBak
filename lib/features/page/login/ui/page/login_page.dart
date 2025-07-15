@@ -9,6 +9,17 @@ import 'package:takyeebbak/core/widgets/text_form_field_components/text_form_fie
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
+  bool validatePhoneNumber(String phoneNumber) {
+    final cleaned = phoneFormatter.getUnmaskedText();
+    if (!cleaned.startsWith('5')) {
+      return false;
+    }
+    if (cleaned.length != 9) {
+      return false;
+    }
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,19 +56,35 @@ class LoginPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 150),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButtonComponent(label: 'Next', onPressed: () {}),
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedOutlineButtonComponent(
-                label: 'Create Account',
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, Routes.registerPage);
-                },
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              spacing: 8,
+              children: [
+                Expanded(
+                  child: ElevatedOutlineButtonComponent(
+                    label: 'Create Account',
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(
+                        context,
+                        Routes.registerPage,
+                      );
+                    },
+                  ),
+                ),
+                Expanded(
+                  child: ElevatedButtonComponent(
+                    label: 'Next',
+                    onPressed: () {
+                      if (validatePhoneNumber(phoneFormatter.getUnmaskedText())) {
+                        Navigator.pushNamed(
+                          context,
+                          Routes.phoneOtpPage,
+                        );
+                      }
+                    },
+                  ),
+                ),
+              ],
             ),
           ],
         ),
