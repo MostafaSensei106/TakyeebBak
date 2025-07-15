@@ -45,6 +45,8 @@ class AppRouter {
         page = const RegisterPage();
         break;
 
+      
+
 
       default:
         page = const NoRoutesError();

@@ -105,7 +105,7 @@ class _PhoneOtpPageState extends State<PhoneOtpPage> {
                 child: ElevatedButtonComponent(
                   label: 'Next',
                   onPressed: () {
-                    Navigator.pushNamed(context, Routes.mainPage);
+                    Navigator.pushReplacementNamed(context, Routes.mainPage);
                   },
                 ),
               ),

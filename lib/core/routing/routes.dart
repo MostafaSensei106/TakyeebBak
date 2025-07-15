@@ -4,14 +4,14 @@ class Routes {
   static const String onboardingPage = '/';
 
   /// The route to the onboarding page.
-  static const String mainPage = '/onboarding';
+  static const String mainPage = '/main';
 
   /// The route to the settings page.
   static const String settingsPage = '/settings';
 
   static const String loginPage = '/login';
 
-  static const String phoneOtpPage = '/login/phoneOtp';
+  static const String phoneOtpPage = '/phoneOtp';
 
   static const String registerPage = '/register';
 
