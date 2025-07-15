@@ -42,7 +42,7 @@ class LoginPage extends StatelessWidget {
                     label: "Phone Number",
                     prefixText: "+966 | ",
                     controller: phoneController,
-                    keyboarInputType: TextInputType.number,
+                    keyboarInputType: TextInputType.phone,
                     inputFormatters: [phoneFormatter],
                     validator: (_) {
                       final cleaned = phoneFormatter.getUnmaskedText();
