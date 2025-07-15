@@ -34,7 +34,7 @@ class AppRouter {
         break;
 
       case Routes.loginPage:
-        page = const LoginPage();
+        page =  LoginPage();
         break;
 
       case Routes.phoneOtpPage:

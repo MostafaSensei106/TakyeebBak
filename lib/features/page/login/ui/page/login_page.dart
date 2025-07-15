@@ -7,7 +7,9 @@ import 'package:takyeebbak/core/widgets/button_components/elevated_button_compon
 import 'package:takyeebbak/core/widgets/text_form_field_components/text_form_field_component.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginPage({super.key});
+
+  final phoneController = TextEditingController();
 
   bool validatePhoneNumber(String phoneNumber) {
     final cleaned = phoneFormatter.getUnmaskedText();
@@ -39,7 +41,7 @@ class LoginPage extends StatelessWidget {
                   TextFormFieldComponent(
                     label: "Phone Number",
                     prefixText: "+966 | ",
-                    controller: TextEditingController(),
+                    controller: phoneController,
                     keyboarInputType: TextInputType.number,
                     inputFormatters: [phoneFormatter],
                     validator: (_) {
@@ -74,12 +76,14 @@ class LoginPage extends StatelessWidget {
                 Expanded(
                   child: ElevatedButtonComponent(
                     label: 'Next',
+                    isEnabled:
+                        phoneController.text.isNotEmpty &&
+                        validatePhoneNumber(phoneFormatter.getUnmaskedText()),
                     onPressed: () {
-                      if (validatePhoneNumber(phoneFormatter.getUnmaskedText())) {
-                        Navigator.pushNamed(
-                          context,
-                          Routes.phoneOtpPage,
-                        );
+                      if (validatePhoneNumber(
+                        phoneFormatter.getUnmaskedText(),
+                      )) {
+                        Navigator.pushNamed(context, Routes.phoneOtpPage);
                       }
                     },
                   ),
